@@ -1,10 +1,10 @@
-import { Router } from "express";
-const router = Router();
-import * as userController from "../../controllers/userControllers";
+// src/routes/auth.ts
+import express from "express";
+import { authController } from "../../controllers/auth.controller";
 
-router.get("/:id", userController.getUserById);
-router.post("/", userController.createUser);
-router.put("/:id", userController.updateUserById);
-router.delete("/:id", userController.deleteUserById);
+const router = express.Router();
+
+router.post("/register", authController.createUser.bind(authController));
+router.post("/login", authController.loginUser.bind(authController));
 
 export default router;
